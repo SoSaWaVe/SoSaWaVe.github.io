@@ -3,47 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Советы для мам</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>MomHelp - Помощь мамам</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #ff85c1;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            color: #ff85c1;
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .pricing-table {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .pricing-table table {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .pricing-table th, .pricing-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .pricing-table th {
+            background-color: #ff85c1;
+            color: white;
+        }
+
+        .cta-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 12px 20px;
+            background-color: #ff85c1;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .cta-btn:hover {
+            background-color: #ff69b4;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Советы для мам</h1>
-        </header>
-        <main>
-            <section id="home">
-                <h2>Добро пожаловать!</h2>
-                <p>Полезные советы и материалы для мам.</p>
-            </section>
-            <section id="advice" class="hidden">
-                <h2>Советы</h2>
-                <div class="grid">
-                    <div class="card" data-subcategory="nutrition">🍎 Питание</div>
-                    <div class="card" data-subcategory="vaccination">📅 Вакцинация</div>
-                </div>
-            </section>
-            <section id="nutrition" class="hidden">
-                <h2>🍎 Питание</h2>
-                <div class="grid">
-                    <div class="card">PDF</div>
-                    <div class="card">Скоро...</div>
-                </div>
-            </section>
-            <section id="vaccination" class="hidden">
-                <h2>📅 Вакцинация</h2>
-                <div class="grid">
-                    <div class="card">График вакцинации</div>
-                    <div class="card">Скоро...</div>
-                </div>
-            </section>
-        </main>
-        <nav>
-            <button data-section="home">🏠 Главная</button>
-            <button data-section="advice">📋 Советы</button>
-        </nav>
-    </div>
-    <script src="script.js"></script>
+    <header>
+        <h1>MomHelp 🤖</h1>
+        <p>Помогаем мамам с важными делами!</p>
+    </header>
+
+    <section>
+        <h2>Что я могу сделать?</h2>
+        <div class="features">
+            <div class="feature-card">
+                <img src="https://img.icons8.com/ios/50/000000/notes.png" alt="Заметки">
+                <h3>Заметки</h3>
+                <p>Храните важные заметки, советы и полезную информацию.</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://img.icons8.com/ios/50/000000/brainstorming.png" alt="Советы">
+                <h3>Советы</h3>
+                <p>Получите советы по уходу за детьми и многому другому.</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://img.icons8.com/ios/50/000000/artificial-intelligence.png" alt="Нейросети">
+                <h3>Нейросети</h3>
+                <p>Используйте инструменты ИИ для развлечений и решения задач.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-table">
+        <h2>Тарифы 💵</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Услуга</th>
+                    <th>Стоимость</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Генерация текста GPT</td>
+                    <td>1 Mom Поинт</td>
+                </tr>
+                <tr>
+                    <td>Генерация 1 картинки</td>
+                    <td>1 Mom Поинт</td>
+                </tr>
+                <tr>
+                    <td>Генерация истории</td>
+                    <td>0 Mom Поинтов</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Что такое Mom Поинты?</h2>
+        <p>Mom Поинты — внутренняя валюта нашего бота. За них вы можете получать доступ к функциям, таким как генерация текста, изображений, а также истории. Каждый понедельник ваше количество Mom Поинтов может обновляться!</p>
+    </section>
+
+    <a href="https://t.me/MomHelpRobot" class="cta-btn">Начать использовать MomHelp</a>
+
+    <footer>
+        <p>Если у вас есть вопросы, пишите разработчику. Все права защищены &copy; 2025</p>
+    </footer>
+
+    <script>
+        // Простой скрипт для обработки CTA кнопки
+        document.querySelector('.cta-btn').addEventListener('click', function() {
+            alert('Открытие Telegram WebApp...');
+        });
+    </script>
 </body>
 </html>
