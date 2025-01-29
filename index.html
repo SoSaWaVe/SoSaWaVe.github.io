@@ -3,15 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Заметки</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Советы для мам</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
-    <div class="max-w-lg mx-auto p-4">
-        <h1 class="text-2xl font-bold text-center">📋 Мои заметки</h1>
-        <button id="addNote" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg shadow">➕ Добавить заметку</button>
-        <ul id="notesList" class="mt-4 space-y-2"></ul>
+<body>
+    <div class="container">
+        <header>
+            <h1>Советы для мам</h1>
+        </header>
+        <main>
+            <section id="home">
+                <h2>Добро пожаловать!</h2>
+                <p>Полезные советы и материалы для мам.</p>
+            </section>
+            <section id="advice" class="hidden">
+                <h2>Советы</h2>
+                <div class="grid">
+                    <div class="card" onclick="showSubCategory('nutrition')">🍎 Питание</div>
+                    <div class="card" onclick="showSubCategory('vaccination')">📅 Вакцинация</div>
+                </div>
+            </section>
+            <section id="nutrition" class="hidden">
+                <h2>🍎 Питание</h2>
+                <div class="grid">
+                    <div class="card">PDF</div>
+                    <div class="card">Скоро...</div>
+                </div>
+            </section>
+            <section id="vaccination" class="hidden">
+                <h2>📅 Вакцинация</h2>
+                <div class="grid">
+                    <div class="card">График вакцинации</div>
+                    <div class="card">Скоро...</div>
+                </div>
+            </section>
+        </main>
+        <nav>
+            <button onclick="showSection('home')">🏠 Главная</button>
+            <button onclick="showSection('advice')">📋 Советы</button>
+        </nav>
     </div>
     <script src="script.js"></script>
 </body>
