@@ -2,10 +2,10 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css?v=1.0.1">
-    <script src="script.js?v=1.0.1"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MomHelp - Помощь мамам</title>
+    <!-- Подключение Telegram WebApp JS SDK -->
+    <script src="https://cdn.jsdelivr.net/gh/TelegramMessenger/WebAppJS@1.4/webapp.min.js"></script>
     <style>
         :root {
             --primary-color: linear-gradient(135deg, #ff85c1, #ff69b4);
@@ -248,7 +248,7 @@
 </head>
 <body>
     <header>
-        <h1><center>MomHelp 🤖</center></h1>
+        <h1>MomHelp 🤖</h1>
         <div class="theme-toggle" onclick="toggleTheme()">
             <span class="light-text">Светлая</span>
             <div class="slider"></div>
@@ -257,39 +257,39 @@
     </header>
 
     <section class="centered-image">
-        <a href="https://t.me/MomHelpRobot" target="_blank">
+        <div class="centered-image" onclick="openExternalLink('https://t.me/MomHelpRobot')">
             <img src="https://www.krea.ai/api/img?f=webp&i=https%3A%2F%2Ftest1-emgndhaqd0c9h2db.a01.azurefd.net%2Fimages%2Fa9d679f3-4883-4eb7-9e8a-2e66d57931c2.png" alt="MomHelp">
-        </a>
+        </div>
     </section>
 
     <section>
-        <h1><center>Что я могу делать?</center></h1>
+        <h1>Что я могу делать?</h1>
         <div class="features">
-            <a href="https://t.me/MomHelpRobot?start=notes" class="feature-card">
+            <div class="feature-card" onclick="openExternalLink('https://t.me/MomHelpRobot?start=notes')">
                 <img src="https://www.krea.ai/api/img?f=webp&i=https%3A%2F%2Ftest1-emgndhaqd0c9h2db.a01.azurefd.net%2Fimages%2Fa9d679f3-4883-4eb7-9e8a-2e66d57931c2.png" alt="Заметки">
                 <h3>Заметки</h3>
                 <p>Храните важные заметки, советы и полезную информацию.</p>
-            </a>
-            <a href="https://t.me/MomHelpRobot?start=advise" class="feature-card">
+            </div>
+            <div class="feature-card" onclick="openExternalLink('https://t.me/MomHelpRobot?start=tips')">
                 <img src="https://www.krea.ai/api/img?f=webp&i=https%3A%2F%2Ftest1-emgndhaqd0c9h2db.a01.azurefd.net%2Fimages%2Fbdec58b1-ee7e-453c-b20a-829120368c38.png" alt="Советы">
                 <h3>Советы</h3>
                 <p>Получите советы по уходу за детьми и многому другому.</p>
-            </a>
-            <a href="https://t.me/MomHelpRobot?start=ai" class="feature-card">
+            </div>
+            <div class="feature-card" onclick="openExternalLink('https://t.me/MomHelpRobot?start=ai')">
                 <img src="https://www.krea.ai/api/img?f=webp&i=https%3A%2F%2Ftest1-emgndhaqd0c9h2db.a01.azurefd.net%2Fimages%2F46777697-aa5e-4660-b61a-c57b0fa1d2c5.png" alt="Нейросети">
                 <h3>Нейросети</h3>
                 <p>Используйте инструменты ИИ для развлечений и решения задач.</p>
-            </a>
-            <a href="https://t.me/MomHelpRobot?start=search" class="feature-card">
-                <img src="https://www.krea.ai/api/img?f=webp&i=https%3A%2F%2Ftest1-emgndhaqd0c9h2db.a01.azurefd.net%2Fimages%2F897965c3-0ffa-4805-bf9e-96b2e634b985.png" alt="Советы">
+            </div>
+            <div class="feature-card" onclick="openExternalLink('https://t.me/MomHelpRobot?start=places')">
+                <img src="https://www.krea.ai/api/img?f=webp&i=https%3A%2F%2Ftest1-emgndhaqd0c9h2db.a01.azurefd.net%2Fimages%2F897965c3-0ffa-4805-bf9e-96b2e634b985.png" alt="Поиск по местам">
                 <h3>Поиск по местам</h3>
                 <p>Поможет вам найти близжайшие заведения.</p>
-            </a>
+            </div>
         </div>
     </section>
 
     <section class="pricing-table">
-        <h2><center>Тарифы</center></h2>
+        <h2>Тарифы</h2>
         <table>
             <thead>
                 <tr>
@@ -315,13 +315,28 @@
     </section>
 
     <section>
-        <h2><center>Что такое Mom Поинты?</center></h2>
+        <h2>Что такое Mom Поинты?</h2>
         <p><b>Mom Поинты</b> — внутренняя валюта нашего бота. За них вы можете получать доступ к функциям, таким как генерация текста, изображений, а также истории. Каждый понедельник ваше количество Mom Поинтов может обновляться!</p>
     </section>
 
-    <a href="https://t.me/MomHelpRobot" class="cta-btn">Начать использовать MomHelp</a>
+    <a href="#" onclick="openExternalLink('https://t.me/MomHelpRobot'); return false;" class="cta-btn">Начать использовать MomHelp</a>
 
     <script>
+        // Инициализация Telegram WebApp
+        if (Telegram.WebApp) {
+            Telegram.WebApp.ready(); // Уведомляем Telegram, что Web App готов
+        }
+
+        // Функция для открытия внешних ссылок
+        function openExternalLink(url) {
+            if (Telegram.WebApp) {
+                Telegram.WebApp.openLink(url); // Открываем ссылку через Telegram WebApp API
+            } else {
+                window.location.href = url; // Если не в Telegram, открываем стандартным способом
+            }
+        }
+
+        // Переключение темы
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
             const themeToggle = document.querySelector('.theme-toggle');
