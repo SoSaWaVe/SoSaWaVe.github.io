@@ -302,34 +302,31 @@
   <script>
     // Инициализация Telegram WebApp
     if (Telegram.WebApp) {
-      Telegram.WebApp.ready(); // Уведомляем Telegram, что Web App готов
-      // Подставляем имя пользователя (если доступно)
-      if (Telegram.WebApp.initDataUnsafe &&
-          Telegram.WebApp.initDataUnsafe.user &&
-          Telegram.WebApp.initDataUnsafe.user.first_name) {
-        document.getElementById('greeting').textContent =
-          'Здравствуйте, ' + Telegram.WebApp.initDataUnsafe.user.first_name + '!';
+      Telegram.WebApp.ready();
+      let userName = 'гость';
+      if (Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
+        userName = Telegram.WebApp.initDataUnsafe.user.first_name || Telegram.WebApp.initDataUnsafe.user.username || 'гость';
       }
+      document.getElementById('greeting').textContent = 'Здравствуйте, ' + userName + '!';
     }
 
     // Флаг для предотвращения повторных кликов
     let linkOpened = false;
-    // Функция для открытия внешних ссылок с предотвращением повторных нажатий и сворачиванием WebApp
     function openExternalLink(url) {
       if (linkOpened) return;
       linkOpened = true;
       if (Telegram.WebApp) {
-        Telegram.WebApp.openLink(url);
-        // Небольшая задержка для уверенности, что ссылка откроется, затем сворачиваем WebApp
-        setTimeout(function() {
-          Telegram.WebApp.close();
-        }, 500);
+        Telegram.WebApp.openLink(url, { try_instant_view: true });
+        // Если необходимо закрывать WebApp, можно добавить задержку,
+        // но сначала проверьте, что ссылка открывается корректно.
+        // setTimeout(function() {
+        //   Telegram.WebApp.close();
+        // }, 1500);
       } else {
         window.location.href = url;
       }
     }
 
-    // Переключение темы
     function toggleTheme() {
       document.body.classList.toggle('dark-mode');
       const themeToggle = document.querySelector('.theme-toggle');
