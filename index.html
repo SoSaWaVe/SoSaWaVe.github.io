@@ -301,14 +301,13 @@
 
   <script>
     // Инициализация Telegram WebApp
-    if (Telegram.WebApp) {
-      Telegram.WebApp.ready();
-      let userName = 'гость';
-      if (Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
-        userName = Telegram.WebApp.initDataUnsafe.user.first_name || Telegram.WebApp.initDataUnsafe.user.username || 'гость';
-      }
-      document.getElementById('greeting').textContent = 'Здравствуйте, ' + userName + '!';
+    if (Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
+      document.getElementById('greeting').innerText =
+      'Здравствуйте, ' + Telegram.WebApp.initDataUnsafe.user.first_name + '!';
+    } else {
+      document.getElementById('greeting').innerText = 'Здравствуйте, гость!';
     }
+
 
     // Флаг для предотвращения повторных кликов
     let linkOpened = false;
