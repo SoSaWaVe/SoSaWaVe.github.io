@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MomHelp - Помощь мамам</title>
-  <!-- Подключение Telegram WebApp JS SDK -->
   <script src="https://cdn.jsdelivr.net/gh/TelegramMessenger/WebAppJS@1.4/webapp.min.js"></script>
   <style>
     :root {
@@ -300,7 +299,6 @@
   <a href="#" onclick="openExternalLink('https://t.me/MomHelpRobot'); return false;" class="cta-btn">Начать использовать MomHelp</a>
 
   <script>
-    // Инициализация Telegram WebApp
     if (Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
       document.getElementById('greeting').innerText =
       'Здравствуйте, ' + Telegram.WebApp.initDataUnsafe.user.first_name + '!';
@@ -308,19 +306,12 @@
       document.getElementById('greeting').innerText = 'Здравствуйте, гость!';
     }
 
-
-    // Флаг для предотвращения повторных кликов
     let linkOpened = false;
     function openExternalLink(url) {
       if (linkOpened) return;
       linkOpened = true;
       if (Telegram.WebApp) {
         Telegram.WebApp.openLink(url, { try_instant_view: true });
-        // Если необходимо закрывать WebApp, можно добавить задержку,
-        // но сначала проверьте, что ссылка открывается корректно.
-        // setTimeout(function() {
-        //   Telegram.WebApp.close();
-        // }, 1500);
       } else {
         window.location.href = url;
       }
