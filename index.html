@@ -299,6 +299,8 @@
   <a href="#" onclick="openExternalLink('https://t.me/MomHelpRobot'); return false;" class="cta-btn">Начать использовать MomHelp</a>
 
   <script>
+    alert(Telegram.WebApp.initDataUnsafe)
+    alert(Telegram.WebApp.initDataUnsafe.user)
     if (Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
       document.getElementById('greeting').innerText =
       'Здравствуйте, ' + Telegram.WebApp.initDataUnsafe.user.first_name + '!';
