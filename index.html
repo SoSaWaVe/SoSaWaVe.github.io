@@ -299,22 +299,17 @@
   <a href="#" onclick="openExternalLink('https://t.me/MomHelpRobot'); return false;" class="cta-btn">Начать использовать MomHelp</a>
 
   <script>
-    if (Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+
+    const user = tg.initDataUnsafe.user;
+  
+    if (user) {
       document.getElementById('greeting').innerText =
-      'Здравствуйте, ' + Telegram.WebApp.initDataUnsafe.user.first_name + '!';
+      'Здравствуйте, ' + user.first_name + '!';
     } else {
       document.getElementById('greeting').innerText = 'Здравствуйте, гость!';
-    }
-
-    let linkOpened = false;
-    function openExternalLink(url) {
-      if (linkOpened) return;
-      linkOpened = true;
-      if (Telegram.WebApp) {
-        Telegram.WebApp.openLink(url, { try_instant_view: true });
-      } else {
-        window.location.href = url;
-      }
     }
 
     function toggleTheme() {
