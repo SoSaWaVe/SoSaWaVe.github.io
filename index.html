@@ -224,7 +224,7 @@
   <header>
     <div>
       <h1>MomHelp 🤖</h1>
-      <small id="greeting">Здравствуйте, гость!</small>
+      <div id="greeting">Здравствуйте, гость!</div>
     </div>
     <div class="theme-toggle" onclick="toggleTheme()">
       <span class="light-text">Светлая</span>
@@ -304,18 +304,12 @@
     tg.expand();
 
     const user = tg.initDataUnsafe.user;
-  
+
     if (user) {
-      document.getElementById('greeting').innerText =
+      document.getElementById('greeting').textContent =
       'Здравствуйте, ' + user.first_name + '!';
     } else {
-      document.getElementById('greeting').innerText = 'Здравствуйте, гость!';
-    }
-
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-      const themeToggle = document.querySelector('.theme-toggle');
-      themeToggle.classList.toggle('active');
+      document.getElementById('greeting').textContent = 'Здравствуйте, гость!';
     }
   </script>
 </body>
