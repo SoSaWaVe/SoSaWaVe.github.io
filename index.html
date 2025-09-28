@@ -295,6 +295,8 @@
     <h2>Что такое Mom Поинты?</h2>
     <p><b>Mom Поинты</b> — внутренняя валюта нашего бота. За них вы можете получать доступ к функциям, таким как генерация текста, изображений, а также истории. Каждый понедельник ваше количество Mom Поинтов может обновляться!</p>
   </section>
+  
+  <div id="log"></div>
 
   <a href="#" onclick="openExternalLink('https://t.me/MomHelpRobot'); return false;" class="cta-btn">Начать использовать MomHelp</a>
 
@@ -304,6 +306,14 @@
     tg.expand();
 
     const user = tg.initDataUnsafe.user;
+    
+    function log(msg) {
+      const logBox = document.getElementById("log");
+      logBox.innerHTML += <div>${msg}</div>;
+    }
+
+    log("initData: " + tg.initData);
+    log("user: " + JSON.stringify(tg.initDataUnsafe.user));
 
     if (user) {
       document.getElementById('greeting').textContent = 'Здравствуйте, ' + user.first_name + '!';
